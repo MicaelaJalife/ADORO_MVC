@@ -25,12 +25,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="EstadoAct" class="control-label"></label>
-                <select asp-for="EstadoAct" class="form-control"></select>
+                <select asp-for="EstadoAct" class="form-control" asp-items="Html.GetEnumSelectList<EstadoActividad>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
                 <span asp-validation-for="EstadoAct" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Prioridad" class="control-label"></label>
-                <select asp-for="Prioridad" class="form-control"></select>
+                <select asp-for="Prioridad" class="form-control" asp-items="Html.GetEnumSelectList<Prioridad>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
                 <span asp-validation-for="Prioridad" class="text-danger"></span>
             </div>
             <div class="form-group">

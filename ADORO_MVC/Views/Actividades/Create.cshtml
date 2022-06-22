@@ -48,9 +48,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="SalaId" class="control-label"></label>
-                @* MIRARRRRR ESTO! <select asp-for="SalaId" class="form-control" asp-items="@Html.DropDownListFor(model => model.SalaId, (SelectList)ViewBag.MisSalas)">
+                <select asp-for="SalaId" class="form-control" asp-items="@ViewBag.MisSalas">
                     <option selected="selected" value="">Please select</option>
-                </select>*@
+                </select>
                 <span asp-validation-for="Prioridad" class="text-danger"></span>
             </div>
             <div class="form-group">

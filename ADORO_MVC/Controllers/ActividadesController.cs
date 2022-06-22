@@ -46,7 +46,7 @@ namespace ADORO_MVC.Controllers
         // GET: Actividades/Create
         public IActionResult Create()
         {
-            var _missalas = new SelectList(_context.Salas.ToList());
+            var _missalas = new SelectList(_context.Salas.ToList(), "Id", "CapacidadMax", null);
             ViewBag.MisSalas = _missalas;
 
             return View();
