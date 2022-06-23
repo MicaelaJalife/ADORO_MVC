@@ -31,7 +31,7 @@ namespace ADORO_MVC.Models
 
         public string Imagen { get; set; }
 
-
+        [Display(Name = "Sala ID")]
         public int SalaId { get; set; }
 
     }

@@ -13,6 +13,8 @@ namespace ADORO_MVC.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        public string Nombre { get; set; }
+
         [Display(Name = "Capacidad Máxima")]
         public int CapacidadMax { get; set; }
 

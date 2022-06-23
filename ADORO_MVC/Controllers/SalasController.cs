@@ -54,7 +54,7 @@ namespace ADORO_MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CapacidadMax,AlAireLibre")] Sala sala)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,CapacidadMax,AlAireLibre")] Sala sala)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace ADORO_MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CapacidadMax,AlAireLibre")] Sala sala)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,CapacidadMax,AlAireLibre")] Sala sala)
         {
             if (id != sala.Id)
             {

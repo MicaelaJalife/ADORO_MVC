@@ -46,9 +46,8 @@ namespace ADORO_MVC.Controllers
         // GET: Actividades/Create
         public IActionResult Create()
         {
-            var _missalas = new SelectList(_context.Salas.ToList(), "Id", "CapacidadMax", null);
+            var _missalas = new SelectList(_context.Salas.ToList(), "Id", "Nombre", null);
             ViewBag.MisSalas = _missalas;
-
             return View();
         }
 
@@ -57,7 +56,7 @@ namespace ADORO_MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Responsable,EstadoAct,Prioridad,FechaInicio,FechaFin")] Actividad actividad)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Responsable,EstadoAct,Prioridad,FechaInicio,FechaFin,Imagen,SalaId")] Actividad actividad)
         {
             if (ModelState.IsValid)
             {
@@ -81,6 +80,8 @@ namespace ADORO_MVC.Controllers
             {
                 return NotFound();
             }
+            var _missalas = new SelectList(_context.Salas.ToList(), "Id", "Nombre", null);
+            ViewBag.MisSalas = _missalas;
             return View(actividad);
         }
 
@@ -89,7 +90,7 @@ namespace ADORO_MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Responsable,EstadoAct,Prioridad,FechaInicio,FechaFin")] Actividad actividad)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Responsable,EstadoAct,Prioridad,FechaInicio,FechaFin,Imagen,SalaId")] Actividad actividad)
         {
             if (id != actividad.Id)
             {
