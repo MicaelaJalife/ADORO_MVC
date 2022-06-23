@@ -140,8 +140,16 @@ namespace ADORO_MVC.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var sala = await _context.Salas.FindAsync(id);
-            _context.Salas.Remove(sala);
-            await _context.SaveChangesAsync();
+            var ActividadesDeSalas = _context.Actividades
+                .Where(f => f.SalaId==id)
+                .ToList();
+            if (!ActividadesDeSalas.Any()) //avisa que no la borró? https://www.c-sharpcorner.com/UploadFile/dacca2/various-return-types-from-mvc-controller/
+
+            {
+                _context.Salas.Remove(sala);
+                await _context.SaveChangesAsync();
+                
+            }
             return RedirectToAction(nameof(Index));
         }
 

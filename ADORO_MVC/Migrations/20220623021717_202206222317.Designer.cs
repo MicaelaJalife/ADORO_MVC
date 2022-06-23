@@ -4,14 +4,16 @@ using ADORO_MVC.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ADORO_MVC.Migrations
 {
     [DbContext(typeof(AdoroDatabaseContext))]
-    partial class AdoroDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220623021717_202206222317")]
+    partial class _202206222317
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

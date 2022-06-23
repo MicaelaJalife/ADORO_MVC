@@ -13,16 +13,22 @@ namespace ADORO_MVC.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public string Responsable { get; set; }
-        //[Display(Name = "Fecha inscripción")]
 
+        [EnumDataType(typeof(TipoActividad))]        
+        [Display(Name = "Tipo de Actividad")] 
+        public TipoActividad TipoActividad { get; set; }
+        
+        [EnumDataType(typeof(GeneroActividad))]
+        [Display(Name = "Genero de Actividad")]
+        public GeneroActividad GeneroActividad { get; set; }
+
+        public string Descripcion { get; set; } // sirve para un texto largo?
+        //[Display(Name = "Fecha inscripción")]
+                
         [EnumDataType(typeof(EstadoActividad))]
         [Display(Name = "Estado Actividad")]
         public EstadoActividad EstadoAct { get; set; }
 
-        [EnumDataType(typeof(Prioridad))]
-        public Prioridad Prioridad { get; set; }
-        
         [Display(Name = "Fecha Inicio")]
         public DateTime FechaInicio { get; set; }
 
