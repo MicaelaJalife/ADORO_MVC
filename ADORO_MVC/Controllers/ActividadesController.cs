@@ -175,17 +175,31 @@ namespace ADORO_MVC.Controllers
             return _context.Actividades.Any(e => e.Id == id);
         }
 
-        public async void ValidateSpace(int? id)
+        // POST: Actividades/Reservar
+        public async Task<IActionResult> Reservar(int? id)
         {
-            var actividad = await _context.Actividades.FindAsync(id);
-            int contador = actividad.Contador;
-            Sala sala = await _context.Salas.FindAsync(actividad.SalaId);
+            var actividad = await _context.Actividades
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (actividad == null)
+            {
+                return NotFound();
+            }
+            //int contador = actividad.Contador;
+            int contador = 0; 
+            
+            //Sala sala = await _context.Salas.FindAsync(actividad.SalaId);
+            var sala = await _context.Salas.FindAsync(actividad.SalaId);
+            if (sala == null)
+            {
+                return NotFound();
+            }
             int capacidadSala = sala.CapacidadMax;
             if (contador < capacidadSala)
             {
                 actividad.Contador++;
                 
             }
+            return View(actividad);
         }
     }
 }
