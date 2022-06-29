@@ -13,9 +13,18 @@
     @foreach(var item in Model)
             {
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-                <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
-                <td>@Html.DisplayFor(modelItem => item.TipoActividad)</td>
+                <td>@Html.DisplayFor(modelItem => item.Imagen)</td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre) <br>
+                    @Html.DisplayFor(modelItem => item.GeneroActividad)<br>
+                    @Html.DisplayFor(modelItem => item.TipoActividad)<br>
+                </td>
+
+                <td>
+                    <a asp-controller="Actividades" asp-action="DetailsUser" asp-route-id="@item.Id">Details</a>
+                </td>
+               
             </tr>
             }
 </table>
