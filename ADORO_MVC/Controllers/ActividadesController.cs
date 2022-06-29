@@ -184,8 +184,8 @@ namespace ADORO_MVC.Controllers
             {
                 return NotFound();
             }
-            //int contador = actividad.Contador;
-            int contador = 0; 
+            int contador = actividad.Contador;
+            //int contador = 10; 
             
             //Sala sala = await _context.Salas.FindAsync(actividad.SalaId);
             var sala = await _context.Salas.FindAsync(actividad.SalaId);
@@ -196,8 +196,9 @@ namespace ADORO_MVC.Controllers
             int capacidadSala = sala.CapacidadMax;
             if (contador < capacidadSala)
             {
-                actividad.Contador++;
-                
+                contador++;
+                actividad.Contador = contador;
+                await _context.SaveChangesAsync();
             }
             return View(actividad);
         }
