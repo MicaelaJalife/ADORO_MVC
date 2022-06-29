@@ -1,0 +1,23 @@
+﻿@model ADORO_MVC.Models.Actividad
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <div>
+        <h2>@Html.DisplayFor(model => model.Nombre)</h2>
+        <div>
+            <img src="@Html.DisplayFor(model => model.Imagen)">
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td>@Html.DisplayFor(model => model.Descripcion)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
