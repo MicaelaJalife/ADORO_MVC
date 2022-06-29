@@ -4,14 +4,16 @@ using ADORO_MVC.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ADORO_MVC.Migrations
 {
     [DbContext(typeof(AdoroDatabaseContext))]
-    partial class AdoroDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220629020524_se.agrego.contador")]
+    partial class seagregocontador
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

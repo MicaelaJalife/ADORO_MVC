@@ -25,6 +25,24 @@ namespace ADORO_MVC.Controllers
             return View(await _context.Actividades.ToListAsync());
         }
 
+        // GET: Actividades/DetailsUser/5
+        public async Task<IActionResult> DetailsUser(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var actividad = await _context.Actividades
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (actividad == null)
+            {
+                return NotFound();
+            }
+
+            return View(actividad);
+        }
+
         // GET: Actividades/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -61,6 +79,7 @@ namespace ADORO_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                actividad.Contador = 0;
                 _context.Add(actividad);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -154,6 +173,19 @@ namespace ADORO_MVC.Controllers
         private bool ActividadExists(int id)
         {
             return _context.Actividades.Any(e => e.Id == id);
+        }
+
+        public async void ValidateSpace(int? id)
+        {
+            var actividad = await _context.Actividades.FindAsync(id);
+            int contador = actividad.Contador;
+            Sala sala = await _context.Salas.FindAsync(actividad.SalaId);
+            int capacidadSala = sala.CapacidadMax;
+            if (contador < capacidadSala)
+            {
+                actividad.Contador++;
+                
+            }
         }
     }
 }

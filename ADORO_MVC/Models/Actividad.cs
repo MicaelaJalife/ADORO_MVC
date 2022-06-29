@@ -40,5 +40,7 @@ namespace ADORO_MVC.Models
         [Display(Name = "Sala ID")]
         public int SalaId { get; set; }
 
+        public int Contador { get; set; }
+
     }
 }
