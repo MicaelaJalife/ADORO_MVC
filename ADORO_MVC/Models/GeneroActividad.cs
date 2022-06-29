@@ -9,7 +9,7 @@ namespace ADORO_MVC.Models
     {
         Fotografia,
         Literatura,
-        TalleMusica,
+        Musica,
         Escritura,
         Danza,
         Pintura,
