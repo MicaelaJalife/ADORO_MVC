@@ -187,9 +187,21 @@ namespace ADORO_MVC.Controllers
             {
                 return NotFound();
             }
+            return View(actividad);
+        }
+
+        // POST: Actividades/Reservar
+        public async Task<IActionResult> EfectuarReserva(int? id, int cantidadEntradas)
+        {
+            var actividad = await _context.Actividades
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (actividad == null)
+            {
+                return NotFound();
+            }
             int contador = actividad.Contador;
             //int contador = 10; 
-            
+
             //Sala sala = await _context.Salas.FindAsync(actividad.SalaId);
             var sala = await _context.Salas.FindAsync(actividad.SalaId);
             if (sala == null)
@@ -197,13 +209,13 @@ namespace ADORO_MVC.Controllers
                 return NotFound();
             }
             int capacidadSala = sala.CapacidadMax;
-            if (contador < capacidadSala)
+            if (contador + cantidadEntradas <= capacidadSala)
             {
-                contador++;
+                contador+=cantidadEntradas;
                 actividad.Contador = contador;
                 await _context.SaveChangesAsync();
             }
-            return View(actividad);
+            return View("DetailsUser", actividad);
         }
     }
 }
