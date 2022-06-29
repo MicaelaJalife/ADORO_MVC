@@ -40,6 +40,9 @@ namespace ADORO_MVC.Controllers
                 return NotFound();
             }
 
+            var sala = await _context.Salas.FindAsync(actividad.SalaId);
+            int capacidadSala = sala.CapacidadMax;
+            ViewBag.capacidadSala = capacidadSala;
             return View(actividad);
         }
 
