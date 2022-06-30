@@ -4,14 +4,16 @@ using ADORO_MVC.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ADORO_MVC.Migrations
 {
     [DbContext(typeof(AdoroDatabaseContext))]
-    partial class AdoroDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220630015555_usuario.agregado")]
+    partial class usuarioagregado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,33 +82,6 @@ namespace ADORO_MVC.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Salas");
-                });
-
-            modelBuilder.Entity("ADORO_MVC.Models.Usuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Apellido")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rol")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Usuario");
                 });
 #pragma warning restore 612, 618
         }

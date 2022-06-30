@@ -13,6 +13,7 @@ namespace ADORO_MVC.Context
         }
         public DbSet<Sala> Salas { get; set; }
         public DbSet<Actividad> Actividades { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
     }
 }
