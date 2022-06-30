@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace ADORO_MVC.Models
 {
-    public enum Prioridad
+    public class Usuario
     {
-        Alta, 
-        Media,
-        Baja
     }
 }

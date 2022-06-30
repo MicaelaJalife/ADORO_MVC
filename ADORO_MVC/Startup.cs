@@ -37,6 +37,7 @@ namespace ADORO_MVC
             services.AddDbContext<AdoroDatabaseContext>(options => options.UseSqlServer(Configuration["ConnectionString:AdoroDBConnection"]));
             services.AddMvc().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)
             .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +59,7 @@ namespace ADORO_MVC
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

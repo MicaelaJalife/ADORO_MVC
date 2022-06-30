@@ -10,7 +10,7 @@
     <div>
         <h2>@Html.DisplayFor(model => model.Nombre)</h2>
         <div>
-            <img src="@Html.DisplayFor(model => model.Imagen)">
+            <img src="..\Images\@Html.DisplayFor(model => model.Imagen)">
         </div>
         <div>
             <table>
@@ -23,7 +23,8 @@
             </table>
         </div>
         <div>
-            <a asp-action="Reservar" asp-route-id="@Model.Id" >Reservar</a> |
+            <a asp-action="Reservar" asp-route-id="@Model.Id">Reservar</a>|
+            <a asp-action="Index" asp-controller="Home">Volver</a>
         </div>
         
     </div>

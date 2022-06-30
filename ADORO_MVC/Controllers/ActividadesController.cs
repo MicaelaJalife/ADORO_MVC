@@ -211,12 +211,17 @@ namespace ADORO_MVC.Controllers
             int capacidadSala = sala.CapacidadMax;
             if (contador + cantidadEntradas <= capacidadSala)
             {
-                contador+=cantidadEntradas;
+                contador += cantidadEntradas;
                 actividad.Contador = contador;
                 await _context.SaveChangesAsync();
+                ViewBag.capacidadSala = capacidadSala - contador;
+                return View("DetailsUser", actividad);
             }
-            ViewBag.capacidadSala = capacidadSala;
-            return View("DetailsUser", actividad);
+            else {
+                ViewBag.mensajeError = "No se puede reservar esa cantidad de entradas";
+                return View("Reservar", actividad);
+            }
+            
         }
     }
 }

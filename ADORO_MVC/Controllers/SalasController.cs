@@ -148,9 +148,13 @@ namespace ADORO_MVC.Controllers
             {
                 _context.Salas.Remove(sala);
                 await _context.SaveChangesAsync();
-                
+                return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction(nameof(Index));
+            else
+            {
+                ViewBag.mensajeError = "No se puede elliminar la sala porque tiene actividades asociadas";
+                return View("Delete", sala);
+            }
         }
 
         private bool SalaExists(int id)
