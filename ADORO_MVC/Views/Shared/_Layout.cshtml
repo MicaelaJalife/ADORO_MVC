@@ -30,12 +30,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
                         </li>
+                        @*Cómo se genera más espacio lateral acá?
+                        Que solo muestre Ingresar.
+                        Que dentro de Ingresar haya un "registrarse"
+                        Que si ya estás login diga SALIR
+                        La vista de create user en todo caso podría ser para Registrarse
+                        usr=HttpContext.Session.GetString("usuario");
+                        if(usr=null) {que se vea Ingresar} else {que se vea Salir] *@
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="LogIn">Ingresar</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Ingresar</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Register">Registrarse</a>
-                        </li>
+                        @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Register">Registrarse</a>
+        </li>*@
                     </ul>
                 </div>
             </div>

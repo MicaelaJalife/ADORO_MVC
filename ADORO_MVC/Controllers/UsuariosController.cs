@@ -149,5 +149,26 @@ namespace ADORO_MVC.Controllers
         {
             return _context.Usuario.Any(e => e.Id == id);
         }
+        //Desde aca intentando el login
+        // GET: Usuarios/LogIn
+        //public async Task<IActionResult> Login()
+        //{
+
+        //    Me parece que tendria que ir a una vista de login
+        //    con un recuadro para el username
+        //    uno para la pass
+        //    Al hacer click en login debería ir a POST de login
+        //    return View(Login);
+        //}
+
+        // POST: Usuarios/Login
+        //[HttpPost, ActionName("Login")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Login2()
+        //{
+        //    //Hay que buscar en la tabla por username, no por ID, no?
+        //    //Si coinciden los datos hay que HttpContext.Session.SetString("usuario", usuario);
+        //    return View(LogIn);
+        //}        
     }
 }
