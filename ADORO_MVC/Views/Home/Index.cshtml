@@ -10,22 +10,25 @@
 </div>
 
 <table class="table">
-    @foreach(var item in Model)
-            {
+    @foreach (var item in Model)
+    {
+        @if (item.EstadoAct == EstadoActividad.Activa)
+        {
             <tr>
                 <td>
                     <img src=@Html.DisplayFor(modelItem => item.Imagen) alt="Actividad" width="80">
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Nombre) <br>
-                    @Html.DisplayFor(modelItem => item.GeneroActividad)<br>
-                    @Html.DisplayFor(modelItem => item.TipoActividad)<br>
+                    <p> @Html.DisplayFor(modelItem => item.Nombre)</p>
+                    <p> @Html.DisplayFor(modelItem => item.GeneroActividad)</p>
+                    <p> @Html.DisplayFor(modelItem => item.TipoActividad)</p>
+                    <p> Desde: @Html.DisplayFor(modelItem => item.FechaInicio)</p>
+                    <p> Hasta: @Html.DisplayFor(modelItem => item.FechaFin)</p>
                 </td>
-
                 <td>
                     <a asp-controller="Actividades" asp-action="DetailsUser" asp-route-id="@item.Id">Details</a>
                 </td>
-               
             </tr>
-            }
+        }
+    }
 </table>

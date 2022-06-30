@@ -215,6 +215,7 @@ namespace ADORO_MVC.Controllers
                 actividad.Contador = contador;
                 await _context.SaveChangesAsync();
             }
+            ViewBag.capacidadSala = capacidadSala;
             return View("DetailsUser", actividad);
         }
     }
