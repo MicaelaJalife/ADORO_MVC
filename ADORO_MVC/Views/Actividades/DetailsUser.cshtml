@@ -18,12 +18,22 @@
                     <td>@Html.DisplayFor(model => model.Descripcion)</td>
                 </tr>
                 <tr>
-                    <td>Capacidad Disponible: @ViewBag.capacidadSala</td>
+                    @if (ViewBag.capacidadSala != 0)
+                    {
+                        <td>Capacidad Disponible: @ViewBag.capacidadSala</td>
+                    }
+                    else
+                    {
+                        <td>Entradas agotadas</td>
+                    }
                 </tr>
             </table>
         </div>
         <div>
-            <a asp-action="Reservar" asp-route-id="@Model.Id">Reservar</a>|
+            @if (ViewBag.capacidadSala != 0)
+            {
+            <a asp-action="Reservar" asp-route-id="@Model.Id">Reservar</a> 
+            }
             <a asp-action="Index" asp-controller="Home">Volver</a>
         </div>
         

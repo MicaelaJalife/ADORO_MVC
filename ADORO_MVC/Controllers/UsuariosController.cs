@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ADORO_MVC.Context;
 using ADORO_MVC.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace ADORO_MVC.Controllers
 {
@@ -149,6 +150,66 @@ namespace ADORO_MVC.Controllers
         {
             return _context.Usuario.Any(e => e.Id == id);
         }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        // POST: Usuarios/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register([Bind("Id,Nombre,Apellido,UserName,Password")] Usuario usuario)
+        {
+            if (ModelState.IsValid)
+            {
+                var usuarioEncontrado = await _context.Usuario.FirstOrDefaultAsync(m => m.UserName == usuario.UserName);
+                if (usuarioEncontrado != null)
+                {
+                    ViewBag.mensajeError = "El nombre de usuario ya existe.";
+                    return View();
+                }
+                usuario.Rol = Rol.User;
+                _context.Add(usuario);
+                await _context.SaveChangesAsync();
+                return View("Login");
+            }
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: Usuarios/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login([Bind("UserName,Password")] Usuario usuario)
+        {
+            if (ModelState.IsValid)
+            {
+                var usuarioEncontrado = await _context.Usuario.FirstOrDefaultAsync(m => m.UserName == usuario.UserName && m.Password == usuario.Password);
+                if (usuarioEncontrado == null)
+                {
+                    ViewBag.mensajeError = "Los datos ingresados son incorrectos.";
+                    return View();
+                }
+                else
+                {
+                    HttpContext.Session.SetString("Rol", usuarioEncontrado.Rol.ToString());
+                    HttpContext.Session.SetString("UserName", usuarioEncontrado.UserName)
+                    return View("~/Views/Home/Index.cshtml", await _context.Actividades.ToListAsync());
+                }
+            }
+            return View();
+        }
+
+
         //Desde aca intentando el login
         // GET: Usuarios/LogIn
         //public async Task<IActionResult> Login()
