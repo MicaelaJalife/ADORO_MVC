@@ -21,6 +21,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        @if(Context.Session.GetInt32("usuario") == "Admin")
+                        {
+
+                        }
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Salas" asp-action="Index">Salas</a>
                         </li>
@@ -30,19 +35,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
                         </li>
-                        @*Cómo se genera más espacio lateral acá?
-                        Que solo muestre Ingresar.
-                        Que dentro de Ingresar haya un "registrarse"
-                        Que si ya estás login diga SALIR
-                        La vista de create user en todo caso podría ser para Registrarse
-                        usr=HttpContext.Session.GetString("usuario");
-                        if(usr=null) {que se vea Ingresar} else {que se vea Salir] *@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Ingresar</a>
                         </li>
-                        @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Register">Registrarse</a>
-        </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Register">Registrarse</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -65,3 +63,11 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+@*Cómo se genera más espacio lateral acá?
+    Que solo muestre Ingresar.
+    Que dentro de Ingresar haya un "registrarse"
+    Que si ya estás login diga SALIR
+    La vista de create user en todo caso podría ser para Registrarse
+    usr=HttpContext.Session.GetString("usuario");
+    if(usr=null) {que se vea Ingresar} else {que se vea Salir] *@
