@@ -169,6 +169,48 @@ namespace ADORO_MVC.Controllers
         //    //Hay que buscar en la tabla por username, no por ID, no?
         //    //Si coinciden los datos hay que HttpContext.Session.SetString("usuario", usuario);
         //    return View(LogIn);
-        //}        
+        //}
+        public ActionResult SendEmail()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SendEmail(string receiver, string subject, string message)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var senderEmail = new MailAddress("lognml@gmail.com", "Jamil");
+                    var receiverEmail = new MailAddress(receiver, "Receiver");
+                    var password = "Your Email Password here";
+                    var sub = subject;
+                    var body = message;
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(senderEmail.Address, password)
+                    };
+                    using (var mess = new MailMessage(senderEmail, receiverEmail)
+                    {
+                        Subject = subject,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(mess);
+                    }
+                    return View();
+                }
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Some Error";
+            }
+            return View();
+        }
     }
 }
