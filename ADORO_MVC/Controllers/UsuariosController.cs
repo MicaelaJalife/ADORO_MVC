@@ -202,7 +202,7 @@ namespace ADORO_MVC.Controllers
                 else
                 {
                     HttpContext.Session.SetString("Rol", usuarioEncontrado.Rol.ToString());
-                    HttpContext.Session.SetString("UserName", usuarioEncontrado.UserName)
+                    HttpContext.Session.SetString("UserName", usuarioEncontrado.UserName);
                     return View("~/Views/Home/Index.cshtml", await _context.Actividades.ToListAsync());
                 }
             }
