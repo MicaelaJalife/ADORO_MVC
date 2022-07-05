@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Details";
 }
+@using Microsoft.AspNetCore.Http;
 
 <h1>Details</h1>
 
@@ -30,12 +31,12 @@
             </table>
         </div>
         <div>
-            @if (ViewBag.capacidadSala != 0)
+            @if (ViewBag.capacidadSala != 0 && (Context.Session.GetString("Rol") == "Admin" || Context.Session.GetString("Rol") == "User"))
             {
-            <a asp-action="Reservar" asp-route-id="@Model.Id">Reservar</a> 
+                <a asp-action="Reservar" asp-route-id="@Model.Id">Reservar</a>
             }
             <a asp-action="Index" asp-controller="Home">Volver</a>
         </div>
-        
+
     </div>
 </div>

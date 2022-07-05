@@ -59,7 +59,7 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">Cerrar Sesion</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">@Context.Session.GetString("UserName") - Cerrar Sesion</a>
                             </li>
                         }
                     </ul>
