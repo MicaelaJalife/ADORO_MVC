@@ -211,7 +211,7 @@ namespace ADORO_MVC.Controllers
                     {
                         return View("~/Views/Home/Index.cshtml", await _context.Actividades.ToListAsync());
                     }
-                    return View("~/Views/Actividades/Index.cshtml", await _context.Actividades.ToListAsync());
+                    return View("~/Views/Home/Index.cshtml", await _context.Actividades.ToListAsync());
                 }
             }
             return View();
