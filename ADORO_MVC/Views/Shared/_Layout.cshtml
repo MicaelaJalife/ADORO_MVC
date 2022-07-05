@@ -10,21 +10,29 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ADORO</a> @*//Saqué _MVC*@
+            <div class="container-menu">
+                <a id="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ADORO</a> @*//Saqué _MVC*@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <style>
+                    .container-menu {
+                        width: 100%;
+                        background-color: #FFA900;
+                        font-family: 'Comic Sans MS';
+                    }
+                   #navbar-brand {
+                        font-weight: bold;
+                    }                    
+                </style>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        @*@if(Context.Session.GetInt32("usuario") == "Admin")
-                        {
-
-                        }*@
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Salas" asp-action="Index">Salas</a>
@@ -32,9 +40,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Actividades" asp-action="Index">Actividades</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Ingresar</a>
                         </li>
