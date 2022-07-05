@@ -201,16 +201,8 @@ namespace ADORO_MVC.Controllers
                 }
                 else
                 {
-                   
                     HttpContext.Session.SetString("Rol", usuarioEncontrado.Rol.ToString());
                     HttpContext.Session.SetString("UserName", usuarioEncontrado.UserName);
-                    if (HttpContext.Session.GetString("Rol") == "Admin") {
-                        return View("~/Views/Salas/Index.cshtml", await _context.Salas.ToListAsync());
-                    }
-                    if (HttpContext.Session.GetString("Rol") == "User")
-                    {
-                        return View("~/Views/Home/Index.cshtml", await _context.Actividades.ToListAsync());
-                    }
                     return View("~/Views/Home/Index.cshtml", await _context.Actividades.ToListAsync());
                 }
             }
