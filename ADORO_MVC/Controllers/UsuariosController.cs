@@ -209,13 +209,11 @@ namespace ADORO_MVC.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            HttpContext.Session.SetString("Rol", null);
-            HttpContext.Session.SetString("UserName", null);
-            return RedirectToAction("Index", "Home", await _context.Actividades.ToListAsync());
+            HttpContext.Session.SetString("Rol", "");
+            HttpContext.Session.SetString("UserName", "");
+            return View("~/Views/Home/Index.cshtml", await _context.Actividades.ToListAsync());
         }
 
 
