@@ -6,65 +6,93 @@
     <title>@ViewData["Title"] - ADORO</title> @*//Saqué _MVC*@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
     @using Microsoft.AspNetCore.Http;
 </head>
 <body>
+    <style>
+        .container-menu {
+            width: 100%;
+            background-color: #FFA900;
+     
+        }
+
+        a.navbar-brand {
+            font-weight: 500;
+            text-align: left;
+            font-size: 50px;
+            margin-left: 20px;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        h1.display-4 {
+            font-size: large;
+        }
+
+        a.nav-link text-dark {
+            text-align: left;
+            font-weight: 300;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+    </style>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        @* navbar-light bg-white border-bottom box-shadow mb-3*@
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm ">
             <div class="container-menu">
-                <a id="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ADORO</a> @*//Saqué _MVC*@
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <table>
+                    <tr>
+                        <td>
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ADORO</a> @*//Saqué _MVC*@
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </td>
 
-                <style>
-                    .container-menu {
-                        width: 100%;
-                        background-color: #FFA900;
-                        font-family: 'Bell MT';
 
-                    }
-                   #navbar-brand {
-                        font-weight: bold;
-                    }                    
-                </style>
 
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        @if (Context.Session.GetString("Rol") == "Admin")
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Salas" asp-action="Index">Salas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Actividades" asp-action="Index">Actividades</a>
-                            </li>
+                        <td>
+                            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                                <ul class="navbar-nav flex-grow-1">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    @if (Context.Session.GetString("Rol") == "Admin")
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Salas" asp-action="Index">Salas</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Actividades" asp-action="Index">Actividades</a>
+                                        </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
-                            </li>
-                        }
-                        @if (Context.Session.GetString("Rol") != "Admin" && Context.Session.GetString("Rol") != "User")
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Ingresar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Register">Registrarse</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">@Context.Session.GetString("UserName") - Cerrar Sesion</a>
-                            </li>
-                        }
-                    </ul>
-                </div>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
+                                        </li>
+                                    }
+                                    @if (Context.Session.GetString("Rol") != "Admin" && Context.Session.GetString("Rol") != "User")
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Ingresar</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Register">Registrarse</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">@Context.Session.GetString("UserName") - Cerrar Sesion</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </nav>
     </header>
