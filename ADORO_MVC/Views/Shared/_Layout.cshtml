@@ -36,6 +36,7 @@
             font-weight: 300;
             font-family: 'Josefin Sans', sans-serif;
         }
+        
 
     </style>
     <header>
@@ -57,9 +58,7 @@
                         <td>
                             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                                 <ul class="navbar-nav flex-grow-1">
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                    </li>
+
                                     @if (Context.Session.GetString("Rol") == "Admin")
                                     {
                                         <li class="nav-item">
@@ -73,23 +72,24 @@
                                             <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
                                         </li>
                                     }
-                                    @if (Context.Session.GetString("Rol") != "Admin" && Context.Session.GetString("Rol") != "User")
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Ingresar</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Register">Registrarse</a>
-                                        </li>
-                                    }
-                                    else
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">@Context.Session.GetString("UserName") - Cerrar Sesion</a>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
+                                  
+                                      @if (Context.Session.GetString("Rol") != "Admin" && Context.Session.GetString("Rol") != "User")
+                                        {
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Ingresar</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Register">Registrarse</a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">@Context.Session.GetString("UserName") - Cerrar Sesion</a>
+                                            </li>
+                                        }
+                                    </ul>
+</div>
                         </td>
                     </tr>
                 </table>
