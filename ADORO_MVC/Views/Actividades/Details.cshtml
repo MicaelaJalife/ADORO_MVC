@@ -4,75 +4,85 @@
     ViewData["Title"] = "Details";
 }
 
+@using Microsoft.AspNetCore.Http;
 <h1>Detalles</h1>
 
-<div>
-    <h4>Actividad</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoActividad)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TipoActividad)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GeneroActividad)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.GeneroActividad)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstadoAct)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstadoAct)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaInicio)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FechaInicio)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaFin)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FechaFin)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SalaId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SalaId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Contador)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Contador)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
-    <a asp-action="Index">Volver a la lista</a>
-</div>
+@if (Context.Session.GetString("Rol") == "Admin")
+{
+    <div>
+        <h4>Actividad</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TipoActividad)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TipoActividad)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.GeneroActividad)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.GeneroActividad)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EstadoAct)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EstadoAct)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FechaInicio)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FechaInicio)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FechaFin)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FechaFin)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Imagen)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Imagen)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SalaId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SalaId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Contador)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Contador)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+        <a asp-action="Index">Volver a la lista</a>
+    </div>
+}
+else
+{ <a>Hay que ingresar como administrador para ver detalles</a>
+    <div>
+        <a asp-action="Index">Volver a la lista</a>
+    </div>
+}
