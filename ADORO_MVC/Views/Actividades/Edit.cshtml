@@ -21,7 +21,7 @@
             <div class="form-group">
                 <label asp-for="TipoActividad" class="control-label"></label>
                 <select asp-for="TipoActividad" class="form-control" asp-items="Html.GetEnumSelectList<TipoActividad>()">
-                    <option selected="selected" value="">Please select</option>
+                    <option selected="selected" value="">Seleccionar tipo de actividad</option>
                 </select>
                 <span asp-validation-for="TipoActividad" class="text-danger"></span>
             </div>
@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label asp-for="GeneroActividad" class="control-label"></label>
                 <select asp-for="GeneroActividad" class="form-control" asp-items="Html.GetEnumSelectList<GeneroActividad>()">
-                    <option selected="selected" value="">Please select</option>
+                    <option selected="selected" value="">Seleccionar genero</option>
                 </select>
                 <span asp-validation-for="GeneroActividad" class="text-danger"></span>
             </div>
@@ -43,7 +43,7 @@
             <div class="form-group">
                 <label asp-for="EstadoAct" class="control-label"></label>
                 <select asp-for="EstadoAct" class="form-control" asp-items="Html.GetEnumSelectList<EstadoActividad>()">
-                    <option selected="selected" value="">Please select</option>
+                    <option selected="selected" value="">Seleccionar estado</option>
                 </select>
                 <span asp-validation-for="EstadoAct" class="text-danger"></span>
             </div>
@@ -66,7 +66,7 @@
             <div class="form-group">
                 <label asp-for="SalaId" class="control-label"></label>
                 <select asp-for="SalaId" class="form-control" asp-items="@ViewBag.MisSalas">
-                    <option selected="selected" value="">Please select</option>
+                    <option selected="selected" value="">Seleccionar sala</option>
                 </select>
                 <span asp-validation-for="SalaId" class="text-danger"></span>
             </div>
