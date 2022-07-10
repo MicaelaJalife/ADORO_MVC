@@ -4,72 +4,82 @@
     ViewData["Title"] = "Delete";
 }
 
+@using Microsoft.AspNetCore.Http;
 <h1>Eliminar actividad</h1>
 
-<h3>¿Estás seguro/a de eliminar la actividad?</h3>
-<div>
-    <h4>Actividad</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoActividad)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TipoActividad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GeneroActividad)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GeneroActividad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EstadoAct)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EstadoAct)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaInicio)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaInicio)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaFin)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaFin)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SalaId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SalaId)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Volver a la lista</a>
-    </form>
-</div>
+@if (Context.Session.GetString("Rol") == "Admin")
+{
+    <h3>¿Estás seguro/a de eliminar la actividad?</h3>
+    <div>
+        <h4>Actividad</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TipoActividad)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TipoActividad)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.GeneroActividad)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.GeneroActividad)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EstadoAct)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EstadoAct)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FechaInicio)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FechaInicio)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FechaFin)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FechaFin)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Imagen)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Imagen)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SalaId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SalaId)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            <a asp-action="Index">Volver a la lista</a>
+        </form>
+    </div>
+}
+else
+{ <a>Hay que ingresar como administrador para eliminar actividad</a>
+  <form asp-action="Delete">
+      <a asp-action="Index">Volver a la lista</a>
+  </form>
+}

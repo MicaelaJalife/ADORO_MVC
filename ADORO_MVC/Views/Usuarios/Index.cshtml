@@ -4,50 +4,61 @@
     ViewData["Title"] = "Index";
 }
 
+@using Microsoft.AspNetCore.Http;
 <h1>Usuarios</h1>
 
-<p>
-    <a asp-action="Create">Crear nuevo usuario</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rol)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rol)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Ver Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-            </td>
-        </tr>
+@if (Context.Session.GetString("Rol") == "Admin")
+{
+    <p>
+        <a asp-action="Create">Crear nuevo usuario</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rol)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rol)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Ver Detalles</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-    </tbody>
-</table>
+else
+{ <a>Hay que ingresar como administrador para listar los usuarios</a>
+  <div>
+      <a asp-action="Index">Volver a la lista</a>
+  </div>
+}

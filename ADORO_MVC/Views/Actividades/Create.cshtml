@@ -4,76 +4,84 @@
     ViewData["Title"] = "Create";
 }
 
+@using Microsoft.AspNetCore.Http;
+
 <h1>Crear nueva actividad</h1>
 
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
+        @if (Context.Session.GetString("Rol") == "Admin")
+        {
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="TipoActividad" class="control-label"></label>
-                <select asp-for="TipoActividad" class="form-control" asp-items="Html.GetEnumSelectList<TipoActividad>()">
-                    <option selected="selected" value="">Seleccionar tipo de actividad</option>
-                </select>
-                <span asp-validation-for="TipoActividad" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="TipoActividad" class="control-label"></label>
+                    <select asp-for="TipoActividad" class="form-control" asp-items="Html.GetEnumSelectList<TipoActividad>()">
+                        <option selected="selected" value="">Seleccionar tipo de actividad</option>
+                    </select>
+                    <span asp-validation-for="TipoActividad" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="GeneroActividad" class="control-label"></label>
-                <select asp-for="GeneroActividad" class="form-control" asp-items="Html.GetEnumSelectList<GeneroActividad>()">
-                    <option selected="selected" value="">Seleccionar genero</option>
-                </select>
-                <span asp-validation-for="GeneroActividad" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="GeneroActividad" class="control-label"></label>
+                    <select asp-for="GeneroActividad" class="form-control" asp-items="Html.GetEnumSelectList<GeneroActividad>()">
+                        <option selected="selected" value="">Seleccionar genero</option>
+                    </select>
+                    <span asp-validation-for="GeneroActividad" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />
-                <span asp-validation-for="Descripcion" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="Descripcion" class="control-label"></label>
+                    <input asp-for="Descripcion" class="form-control" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="EstadoAct" class="control-label"></label>
-                <select asp-for="EstadoAct" class="form-control" asp-items="Html.GetEnumSelectList<EstadoActividad>()">
-                    <option selected="selected" value="">Seleccionar estado</option>
-                </select>
-                <span asp-validation-for="EstadoAct" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="EstadoAct" class="control-label"></label>
+                    <select asp-for="EstadoAct" class="form-control" asp-items="Html.GetEnumSelectList<EstadoActividad>()">
+                        <option selected="selected" value="">Seleccionar estado</option>
+                    </select>
+                    <span asp-validation-for="EstadoAct" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="FechaInicio" class="control-label"></label>
-                <input asp-for="FechaInicio" class="form-control" />
-                <span asp-validation-for="FechaInicio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaFin" class="control-label"></label>
-                <input asp-for="FechaFin" class="form-control" />
-                <span asp-validation-for="FechaFin" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Imagen" class="control-label"></label>
-                <input asp-for="Imagen" class="form-control" />
-                <span asp-validation-for="Imagen" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SalaId" class="control-label"></label>
-                <select asp-for="SalaId" class="form-control" asp-items="@ViewBag.MisSalas">
-                    <option selected="selected" value="">Seleccionar sala</option>
-                </select>
-                <span asp-validation-for="SalaId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group">
+                    <label asp-for="FechaInicio" class="control-label"></label>
+                    <input asp-for="FechaInicio" class="form-control" />
+                    <span asp-validation-for="FechaInicio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaFin" class="control-label"></label>
+                    <input asp-for="FechaFin" class="form-control" />
+                    <span asp-validation-for="FechaFin" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Imagen" class="control-label"></label>
+                    <input asp-for="Imagen" class="form-control" />
+                    <span asp-validation-for="Imagen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SalaId" class="control-label"></label>
+                    <select asp-for="SalaId" class="form-control" asp-items="@ViewBag.MisSalas">
+                        <option selected="selected" value="">Seleccionar sala</option>
+                    </select>
+                    <span asp-validation-for="SalaId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Crear" class="btn btn-primary" />
+                </div>
+            </form>
+        }
+        else
+        { <a>Hay que ingresar como administrador para crear una actividad</a>
+        }
     </div>
 </div>
 
