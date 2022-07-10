@@ -4,39 +4,42 @@
     ViewData["Title"] = "Details";
 }
 @using Microsoft.AspNetCore.Http;
-
-<h1>Details</h1>
-
 <div>
     <div>
-        <h2>@Html.DisplayFor(model => model.Nombre)</h2>
-        <div>
-            <img src="/Images/@Html.DisplayFor(modelItem => Model.Imagen)" alt="Actividad" width="120"/>
-        </div>
-        <div>
-            <table>
-                <tr>
-                    <td>@Html.DisplayFor(model => model.Descripcion)</td>
-                </tr>
-                <tr>
-                    @if (ViewBag.capacidadSala != 0)
-                    {
-                        <td>Capacidad Disponible: @ViewBag.capacidadSala</td>
-                    }
-                    else
-                    {
-                        <td>Entradas agotadas</td>
-                    }
-                </tr>
-            </table>
-        </div>
-        <div>
-            @if (ViewBag.capacidadSala != 0 && (Context.Session.GetString("Rol") == "Admin" || Context.Session.GetString("Rol") == "User"))
-            {
-                <a asp-action="Reservar" asp-route-id="@Model.Id">Reservar</a>
-            }
-            <a asp-action="Index" asp-controller="Home">Volver al inicio</a>
-        </div>
+        <table class="table">
+            <tr>
+                <td>
+                    <img src="/Images/@Html.DisplayFor(modelItem => Model.Imagen)" alt="Actividad" width="200" />
+                </td>
+                <td>
+                    <h1>@Html.DisplayFor(model => model.Nombre)</h1>
+                    <p>@Html.DisplayFor(model => model.Descripcion)</p>
+                </td>
+                @if (ViewBag.capacidadSala != 0)
+                {
+                    <td>
+                        <p>Capacidad Disponible: @ViewBag.capacidadSala</p>
+                        @if ((Context.Session.GetString("Rol") == "Admin" || Context.Session.GetString("Rol") == "User"))
+                        {
+                            <a asp-action="Reservar" asp-route-id="@Model.Id">Reservar</a>
+                        }
+                    </td>
+                }
+                else
+                {
+                    <td>Entradas agotadas</td>
+                }
+
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <a asp-action="Index" asp-controller="Home">Volver al inicio</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+        
 
     </div>
-</div>
