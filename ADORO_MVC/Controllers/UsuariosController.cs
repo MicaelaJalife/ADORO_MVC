@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ADORO_MVC.Context;
 using ADORO_MVC.Models;
 using Microsoft.AspNetCore.Http;
+using System.Text.RegularExpressions;
 
 namespace ADORO_MVC.Controllers
 {
@@ -169,6 +170,21 @@ namespace ADORO_MVC.Controllers
                 if (usuarioEncontrado != null)
                 {
                     ViewBag.mensajeError = "El nombre de usuario ya existe.";
+                    return View();
+                }
+                else if (!Regex.IsMatch(usuario.Nombre, @"^[a-zA-Z]+$"))
+                {
+                    ViewBag.mensajeError = "El nombre debe contener sólo caracteres alfabéticos.";
+                    return View();
+                }
+                else if (!Regex.IsMatch(usuario.Apellido, @"^[a-zA-Z]+$"))
+                {
+                    ViewBag.mensajeError = "El apellido debe contener sólo caracteres alfabéticos.";
+                    return View();
+                }
+                else if (!Regex.IsMatch(usuario.Password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$"))
+                {
+                    ViewBag.mensajeError = "La contraeña debe contener al menos 8 digitos, una letra mayúscula, una minúscula, un número y alguno de los siguientes símbolos: @$!%*?&.";
                     return View();
                 }
                 usuario.Rol = Rol.User;
