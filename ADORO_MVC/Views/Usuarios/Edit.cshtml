@@ -49,14 +49,16 @@
             </form>
         </div>
     </div>
+
+    <div>
+        <a asp-action="Index">Volver a la lista</a>
+    </div>
 }
 else
 { <a>Hay que ingresar como administrador para editar un usuario</a>
+    <br />
+    <a asp-action="Index" asp-controller="Home">Volver al inicio</a>
 }
-
-<div>
-    <a asp-action="Index">Volver a la lista</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

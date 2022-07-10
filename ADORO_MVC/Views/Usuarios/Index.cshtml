@@ -55,10 +55,13 @@
             }
         </tbody>
     </table>
+    <div>
+        <a asp-action="Index">Volver a la lista</a>
+    </div>
 }
 else
-{ <a>Hay que ingresar como administrador para listar los usuarios</a>
-  <div>
-      <a asp-action="Index">Volver a la lista</a>
-  </div>
+{
+    <a>Hay que ingresar como administrador para listar los usuarios</a>
+    <br />
+    <a asp-action="Index" asp-controller="Home">Volver al inicio</a>
 }

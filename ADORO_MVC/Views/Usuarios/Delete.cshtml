@@ -55,8 +55,9 @@
     </div>
 }
 else
-{ <a>Hay que ingresar como administrador para eliminar un usuario</a>
-    <form asp-action="Delete">
-        <a asp-action="Index">Volver a la lista</a>
-    </form>
+{
+    <a>Hay que ingresar como administrador para eliminar un usuario</a>
+    <br />
+    <a asp-action="Index" asp-controller="Home">Volver al inicio</a>
+
 }

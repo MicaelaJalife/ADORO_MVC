@@ -9,10 +9,12 @@
 
 <h4>Actividad</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        @if (Context.Session.GetString("Rol") == "Admin" )
-        {<form asp-action="Edit">
+@if (Context.Session.GetString("Rol") == "Admin")
+{
+    <div class="row">
+        <div class="col-md-4">
+
+            <form asp-action="Edit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Nombre" class="control-label"></label>
@@ -76,16 +78,18 @@
                     <input type="submit" value="Guardar" class="btn btn-primary" />
                 </div>
             </form>
-        }
-        else
-        { <a>Hay que ingresar como administrador para editar una actividad</a>
-        }
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Volver a la lista</a>
-</div>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Volver a la lista</a>
+    </div>}
+else
+{ <a>Hay que ingresar como administrador para editar una actividad</a>
+    <br />
+    <a asp-action="Index" asp-controller="Home">Volver al inicio</a>
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

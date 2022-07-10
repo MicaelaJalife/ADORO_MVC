@@ -7,10 +7,11 @@
 @using Microsoft.AspNetCore.Http;
 <h1> Crear nueva sala</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        @if (Context.Session.GetString("Rol") == "Admin")
-        {
+@if (Context.Session.GetString("Rol") == "Admin")
+{
+    <div class="row">
+        <div class="col-md-4">
+
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
@@ -32,16 +33,19 @@
                     <input type="submit" value="Crear" class="btn btn-primary" />
                 </div>
             </form>
-        }
-        else
-        { <a>Hay que ingresar como administrador para crear una sala</a>
-        }
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Volver a la lista</a>
-</div>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Volver a la lista</a>
+    </div>
+}
+else
+{ <a>Hay que ingresar como administrador para crear una sala</a>
+    <br />
+    <a asp-action="Index" asp-controller="Home">Volver al inicio</a>
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
