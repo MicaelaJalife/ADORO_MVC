@@ -4,10 +4,20 @@
     ViewData["Title"] = "Details";
 }
 @using Microsoft.AspNetCore.Http;
+
+<head>
+    <style>
+        .actividadCajita {
+            background-color: #6c757d21;
+            border: 10px solid #ffbe3e;
+        }
+    </style>
+</head>
+
 <div>
     <div>
         <table class="table">
-            <tr>
+            <tr class="actividadCajita">
                 <td>
                     <img src="/Images/@Html.DisplayFor(modelItem => Model.Imagen)" alt="Actividad" width="200" />
                 </td>

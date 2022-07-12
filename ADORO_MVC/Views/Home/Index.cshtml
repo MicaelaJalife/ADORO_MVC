@@ -4,13 +4,23 @@
     ViewData["Title"] = "Home Page";
 }
 
+<head>
+    <style>
+        .actividadCajita {
+            background-color: #6c757d21;
+            border: 10px solid #ffbe3e;
+        }
+    </style>
+
+</head>
 
 <table class="table">
     @foreach (var item in Model)
     {
         @if (item.EstadoAct == EstadoActividad.Activa)
         {
-            <tr>
+            <tr class="actividadCajita">
+     
                 <td>
                     <img src="/Images/@Html.DisplayFor(modelItem => item.Imagen)" alt="Actividad" width="200">
                 </td>

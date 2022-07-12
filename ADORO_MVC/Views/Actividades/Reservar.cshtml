@@ -4,12 +4,23 @@
     ViewData["Title"] = "Reservar";
 }
 @using Microsoft.AspNetCore.Http;
+
+<head>
+    <style>
+        .reservarCajita {
+            background-color: #6c757d21;
+            border: 10px solid #ffbe3e;
+        }
+    </style>
+
+</head>
+
 <h1>Reservar</h1>
 
 <h4>Actividad</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="reservarCajita col-md-4">
         @if ((Context.Session.GetString("Rol") == "Admin" || Context.Session.GetString("Rol") == "User"))
         {
             <form asp-action="EfectuarReserva" asp-route-id="@Model.Id">
