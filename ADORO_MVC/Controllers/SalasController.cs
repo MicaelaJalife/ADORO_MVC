@@ -58,6 +58,11 @@ namespace ADORO_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(sala.CapacidadMax <= 0)
+                {
+                    ViewBag.mensajeError = "La capacidad maxima debe ser mayor a 0.";
+                    return View();
+                }
                 _context.Add(sala);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +102,22 @@ namespace ADORO_MVC.Controllers
             {
                 try
                 {
+                    var ActividadesDeSalas = _context.Actividades
+                    .Where(f => f.SalaId == id)
+                    .ToList();
+                    foreach (var actividad in ActividadesDeSalas)
+                    {
+                        if(actividad.Contador > sala.CapacidadMax)
+                        {
+                            ViewBag.mensajeError = "Hay una actividad en dicha sala con una cantidad de participantes mayor a la capacidad maxima seleccionada.";
+                            return View();
+                        }
+                    }
+                    if (sala.CapacidadMax <= 0)
+                    {
+                        ViewBag.mensajeError = "La capacidad maxima debe ser mayor a 0.";
+                        return View();
+                    }
                     _context.Update(sala);
                     await _context.SaveChangesAsync();
                 }

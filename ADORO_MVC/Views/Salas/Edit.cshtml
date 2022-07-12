@@ -31,9 +31,21 @@
                         <input class="form-check-input" asp-for="AlAireLibre" /> @Html.DisplayNameFor(model => model.AlAireLibre)
                     </label>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Guardar" class="btn btn-primary" />
-                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="submit" value="Guardar" class="btn btn-primary" />
+                            </div>
+                        </td>
+                        @if (ViewBag.mensajeError != null)
+                        {
+                            <td>
+                                @ViewBag.mensajeError
+                            </td>
+                        }
+                    </tr>
+                </table>
             </form>
         </div>
     </div>
