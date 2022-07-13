@@ -17,18 +17,31 @@
                 </td>
                 @if (ViewBag.capacidadSala > 0)
                 {
-                    <td>
-                        <p>Capacidad Disponible: @ViewBag.capacidadSala</p>
-                        @if ((Context.Session.GetString("Rol") == "Admin" || Context.Session.GetString("Rol") == "User"))
-                        {
-                            <a asp-action="Reservar" asp-route-id="@Model.Id">Reservar</a>
-                        }
-                    </td>
-                }
-                else
+            <td>
+                <p>Capacidad Disponible: @ViewBag.capacidadSala</p>
+                @if ((Context.Session.GetString("Rol") == "Admin" || Context.Session.GetString("Rol") == "User"))
                 {
-                    <td>Entradas agotadas</td>
+                    <div class="text-align-center">
+                        <a asp-action="Reservar" asp-route-id="@Model.Id">RESERVAR</a>
+                    </div>
+                    <style>
+                        .text-align-center {
+                            height: 60px;
+                            width: 100px;
+                            background: #ffff99;
+                            color: #333;
+                            line-height: 60px;
+                            text-align: center;
+                            vertical-align: middle;
+                        }
+                    </style>
                 }
+            </td>
+            }
+            else
+            {
+            <td>Entradas agotadas</td>
+            }
 
             </tr>
             <tr>
