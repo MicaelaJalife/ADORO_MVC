@@ -173,7 +173,7 @@ namespace ADORO_MVC.Controllers
             }
             else
             {
-                ViewBag.mensajeError = "No se puede elliminar la sala porque tiene actividades asociadas";
+                ViewBag.mensajeError = "No se puede eliminar la sala porque tiene actividades asociadas";
                 return View("Delete", sala);
             }
         }
