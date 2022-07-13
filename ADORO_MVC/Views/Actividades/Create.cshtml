@@ -79,9 +79,16 @@
                     <input type="submit" value="Crear" class="btn btn-primary" />
                 </div>
             </form>
+            @if (ViewBag.mensajeError != null)
+            {
+                <div>
+                    <p>@ViewBag.mensajeError</p>
+                </div>
+            }
 
         </div>
     </div>
+    
 
     <div>
         <a asp-action="Index">Volver a la lista</a>

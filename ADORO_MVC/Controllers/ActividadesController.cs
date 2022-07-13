@@ -82,10 +82,18 @@ namespace ADORO_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                actividad.Contador = 0;
-                _context.Add(actividad);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (actividad.FechaInicio < actividad.FechaFin)
+                {
+                    actividad.Contador = 0;
+                    _context.Add(actividad);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else 
+                {
+                    ViewBag.mensajeError = "La fecha de inicio debe ser menor a la fecha de fin.";
+                    return View();
+                }
             }
             return View(actividad);
         }
@@ -125,8 +133,16 @@ namespace ADORO_MVC.Controllers
             {
                 try
                 {
-                    _context.Update(actividad);
-                    await _context.SaveChangesAsync();
+                    if (actividad.FechaInicio < actividad.FechaFin)
+                    {
+                        _context.Update(actividad);
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        ViewBag.mensajeError = "La fecha de inicio debe ser menor a la fecha de fin.";
+                        return View();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
