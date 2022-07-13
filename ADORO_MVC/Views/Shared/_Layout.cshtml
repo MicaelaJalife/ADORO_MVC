@@ -10,11 +10,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
     @using Microsoft.AspNetCore.Http;
+    <style>
+        .contenedor {
+            overflow: hidden;
+            background-color: #333;
+            top: 0;
+            width: 100%;
+            background: #ffa900;
+        }
+    </style>
 </head>
 <body>
     <header>
         @* navbar-light bg-white border-bottom box-shadow mb-3*@
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm ">
+        <nav class="contenedor navbar navbr-default navbar-expand-sm navbar-toggleable-sm navbar-fixed-top">
             <div class="container-menu">
                 <table>
                     <tr>
@@ -76,7 +85,7 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="contenedor-2 container">
             &copy; 2022 - ADORO
         </div>
     </footer>

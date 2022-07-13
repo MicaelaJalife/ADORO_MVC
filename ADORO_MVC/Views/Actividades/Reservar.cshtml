@@ -26,7 +26,7 @@
             <form asp-action="EfectuarReserva" asp-route-id="@Model.Id">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label for="cantidadEntradas" class="control-label">Selecciona la cantidad de entradas:</label>
+                    <label for="cantidadEntradas" class="control-label" style="margin-top: 10px;">Selecciona la cantidad de entradas:</label>
                     <select name="cantidadEntradas">
                         <option value=1>1</option>
                         <option value=2>2</option>
@@ -38,7 +38,9 @@
                 </div>
             </form>
         }
-        else { <a>Hay que ingresar para reservar</a>
+        else 
+        { 
+            <p>Hay que ingresar para reservar</p>
         }
 
         @if (ViewBag.mensajeError != null)

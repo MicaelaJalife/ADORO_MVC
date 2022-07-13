@@ -11,6 +11,18 @@
             background-color: #6c757d21;
             border: 10px solid #ffbe3e;
         }
+
+        .text-align-center {
+            height: 60px;
+            width: 100px;
+            background: #ffff99;
+            color: #333;
+            line-height: 54px;
+            text-align: center;
+            vertical-align: middle;
+            border: 2px solid #ffbe3e;
+            border-radius: 10px;
+        }
     </style>
 </head>
 
@@ -34,17 +46,6 @@
                     <div class="text-align-center">
                         <a asp-action="Reservar" asp-route-id="@Model.Id">RESERVAR</a>
                     </div>
-                    <style>
-                        .text-align-center {
-                            height: 60px;
-                            width: 100px;
-                            background: #ffff99;
-                            color: #333;
-                            line-height: 60px;
-                            text-align: center;
-                            vertical-align: middle;
-                        }
-                    </style>
                 }
             </td>
             }
