@@ -92,6 +92,8 @@ namespace ADORO_MVC.Controllers
                 else 
                 {
                     ViewBag.mensajeError = "La fecha de inicio debe ser menor a la fecha de fin.";
+                    var _missalas = new SelectList(_context.Salas.ToList(), "Id", "Nombre", null);
+                    ViewBag.MisSalas = _missalas;
                     return View();
                 }
             }
@@ -141,6 +143,8 @@ namespace ADORO_MVC.Controllers
                     else
                     {
                         ViewBag.mensajeError = "La fecha de inicio debe ser menor a la fecha de fin.";
+                        var _missalas = new SelectList(_context.Salas.ToList(), "Id", "Nombre", null);
+                        ViewBag.MisSalas = _missalas;
                         return View();
                     }
                 }
